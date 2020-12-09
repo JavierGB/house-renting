@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+
+<html lang="en"> 
+  <head> 
+    <meta charset="utf-8" />  
+    <title>Apartment renting</title>
+      <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto+Condensed:300|Roboto+Condensed|Roboto+Condensed:300|Roboto+Condensed:300|Roboto+Condensed:300|Roboto+Condensed:300" type="text/css" />
+      <link href="css/bootstrap.min.css" rel="stylesheet">
+      <link href="css/style.css" rel="stylesheet">
+      <script src="js/jquery.min.js"></script>
+      <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+      <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script>
+    $( document ).ready(function() {
+    $.ajax({
+   		url: "http://localhost:8080/solvency/ratio/verify/SQ8RN5LX1",
+   		crossDomain: true,
+    	type: 'get',
+   		error: function(XMLHttpRequest, textStatus, errorThrown){
+        	$( "#ratio" ).html( "<a class=\"button medium style1 pie\"  href=\"http://localhost:8080/solvency/ratio/create/SQ8RN5LX1?callback=http://localhost:8888/tenant.html\">Verify solvency ratio</a>" )
+    	},
+    	success: function(data){
+    		$( "#ratio" ).html( "<b>Solvency Ratio: " + data + "</b><img alt=\"Santander\" src=\"./images/shield.svg\" width=\"30px\" height=\"50px\">")
+    	}
+	});
+    });
+    </script>
+  </head>  
+  <body> 
+    <header> 
+      <div id="top"> 
+        <div class="bg"></div>  
+        <div class="row"> 
+          <div id="logo"></div>  
+          <nav> 
+            <div id="hmenu"> 
+              <ul> 
+                <li> 
+                  <a href="./landlord.html">Login as Javier (Landlord)</a>
+                </li>  
+                <li> 
+                  <a href="./tenant.html">Login as Hilton (Tenant)</a>
+                </li>  
+              </ul> 
+            </div> 
+          </nav>  
+          <div class="clear"></div> 
+        </div> 
+      </div>  
+      <div id="header-wrapper"> 
+        <div class="bg"></div>  
+        <div class="row"> 
+          <div id="header"> 
+            <div id="tagline"> 
+              <h1>Hi Hilton, verify your solvency ratio to have more opportunities to rent an apartment</h1>
+            </div> 
+          </div> 
+        </div> 
+      </div> 
+    </header>  
+    <div id="wrapper"> 
+      <div class="bg"></div>  
+      <div class="row"> 
+        <div id="container"> 
+          <div id="page" class="home"> 
+            <div id="main"> 
+              <section class="home"> 
+                <div class="group"> 
+                  <div id="hilton" class="col span_1_of_4">
+                    <header> 
+                      <h3>Yosh Hilton</h3> 
+                    </header>  
+                    <img src="images/hilton.jpg" style="height:150px; width: auto;" />  
+                    	<p>	<b>Passport:</b> SQ8RN5LX1 </br>
+				<b>Description:</b> Parent with Three Children</br>
+				<b>Status:</b> Living with Partner</br>
+				<b>Occupation:</b> Teacher</br>
+                    <div id="ratio"></div>
+			</p>
+                   </div>
+
+                </div>  
+              </section> 
+            </div>  
+            <div class="clear" style="height:60px"></div> 
+          </div> 
+        </div> 
+      </div> 
+    </div>
+    <div id="dialog" title="Basic dialog" style="display: none">
+      <p>You have rented your apartment!.</p>
+      <p>Now Hilton can access using their smartphone with <br><b>Smart Door Service and Digital Trush!</b></p>
+    </div>
+  </body> 
+</html>
